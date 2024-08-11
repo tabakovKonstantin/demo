@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: init DB schema
+      author: ktabakov
+      changes:
+        - sql:
+            CREATE TABLE measurement (
+                id BIGINT PRIMARY KEY AUTO_INCREMENT,
+                source VARCHAR(255),
+                code_list_code VARCHAR(255),
+                code VARCHAR(255) NOT NULL UNIQUE,
+                display_value VARCHAR(255),
+                long_description VARCHAR(1000),
+                from_date DATE,
+                to_date DATE,
+                sorting_priority INTEGER
+            );
+              
+            CREATE INDEX idx_measurement_code ON measurement(code);
+              
+            COMMENT ON COLUMN measurement.source IS '';
+            COMMENT ON COLUMN measurement.code_list_code IS '';
+            COMMENT ON COLUMN measurement.code IS '';
+            COMMENT ON COLUMN measurement.display_value IS '';
+            COMMENT ON COLUMN measurement.long_description IS '';
+            COMMENT ON COLUMN measurement.from_date IS '';
+            COMMENT ON COLUMN measurement.to_date IS '';
+            COMMENT ON COLUMN measurement.sorting_priority IS '';

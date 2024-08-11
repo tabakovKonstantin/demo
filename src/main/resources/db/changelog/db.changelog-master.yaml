@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: com/gerimedica/demo/db.changelog-init.yaml
+      relativeToChangelogFile: true
